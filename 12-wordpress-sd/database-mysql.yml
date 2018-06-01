@@ -15,20 +15,20 @@ spec:
       - name: MYSQL_ROOT_PASSWORD
         valueFrom:
           secretKeyRef:
-            name: hitters-secrets
+            name: wordpress-secrets
             key: rootPassword
       - name: MYSQL_USER
         valueFrom:
           secretKeyRef:
-            name: hitters-secrets
+            name: wordpress-secrets
             key: username
       - name: MYSQL_PASSWORD
         valueFrom:
           secretKeyRef:
-            name: hitters-secrets
+            name: wordpress-secrets
             key: password
       - name: MYSQL_DATABASE
         valueFrom:
           secretKeyRef:
-            name: hitters-secrets
+            name: wordpress-secrets
             key: database

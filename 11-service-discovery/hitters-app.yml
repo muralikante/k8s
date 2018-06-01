@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hitters-deployment
+  name: hitters-deployment-service-discovery
 spec:
   replicas: 3
   template:
@@ -11,8 +11,8 @@ spec:
     spec:
       containers:
       - name: docker-containers 
-        image: muralikante/docker-node-demo-container
-        command: ["node", "index-db.js"]
+        image: muralikante/docker-node-demo-container:6.0
+        command: ["node", "index-database.js"]
         ports:
         - name: nodejs-port
           containerPort: 3000
@@ -24,10 +24,10 @@ spec:
           - name: MYSQL_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: helloworld-secrets
+                name: hitters-secrets
                 key: rootPassword
           - name: MYSQL_DATABASE
             valueFrom:
               secretKeyRef:
-                name: helloworld-secrets
+                name: hitters-secrets
                 key: database
